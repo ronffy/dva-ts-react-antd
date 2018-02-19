@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "module": "es6",
+    "target": "es2017",
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react", //自动把tsx变成最终的js, 而不是jsx
+    "allowJs": true,
+    "baseUrl": "./src",
+    "moduleResolution": "node",
+    "paths": {
+      "models": [
+        "models"
+      ],
+      "components": [
+        "components"
+      ],
+      "domainComponents": [
+        "domainComponents"
+      ],
+      "utils": [
+        "utils"
+      ],
+      "modules": [
+        "modules"
+      ],
+      "routes": [
+        "routes"
+      ],
+      "themes": [
+        "themes"
+      ],
+      "interfaces": [
+        "interfaces"
+      ],
+      "configs": [
+        "configs"
+      ],
+      "assets": [
+        "assets"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

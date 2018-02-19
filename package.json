@@ -1,0 +1,50 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "set PORT=8002&&roadhog server",
+    "build": "roadhog build",
+    "test": "mocha -r ./test/register test/**/*.ts"
+  },
+  "engines": {
+    "install-node": "6.11.1"
+  },
+  "dependencies": {
+    "antd": "^3.0.0",
+    "babel-runtime": "^6.9.2",
+    "classnames": "^2.2.5",
+    "dva": "^2.0.4",
+    "dva-loading": "^1.0.3",
+    "moment": "^2.19.1",
+    "nprogress": "^0.2.0",
+    "ramda": "^0.25.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.0.8",
+    "@types/react": "^16.0.15",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-dva-hmr": "^0.3.2",
+    "babel-plugin-dynamic-import-webpack": "^1.0.1",
+    "babel-plugin-import": "^1.6.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "chai": "^4.1.2",
+    "copy-webpack-plugin": "^4.2.3",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.8.0",
+    "expect": "^1.20.2",
+    "husky": "^0.12.0",
+    "less-vars-to-js": "^1.2.1",
+    "mocha": "^4.0.1",
+    "node-sass": "^4.5.3",
+    "redbox-react": "^1.4.3",
+    "roadhog": "^1.2.1",
+    "sass-loader": "^6.0.6",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.6.2"
+  }
+}
