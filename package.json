@@ -31,11 +31,12 @@
     "babel-plugin-transform-runtime": "^6.9.0",
     "chai": "^4.1.2",
     "copy-webpack-plugin": "^4.2.3",
-    "eslint": "^3.12.2",
+    "eslint": "^3.19.0",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.8.0",
+    "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-typescript": "^0.8.1",
     "expect": "^1.20.2",
     "husky": "^0.12.0",
     "less-vars-to-js": "^1.2.1",
@@ -45,6 +46,7 @@
     "roadhog": "^1.2.1",
     "sass-loader": "^6.0.6",
     "ts-node": "^3.3.0",
-    "typescript": "^2.6.2"
+    "typescript": "^2.6.2",
+    "typescript-eslint-parser": "^13.0.0"
   }
 }

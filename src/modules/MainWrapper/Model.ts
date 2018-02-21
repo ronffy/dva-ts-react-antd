@@ -5,6 +5,9 @@ interface G {
   g: number
 }
 
+console.log(3);
+
+
 
 
 const model: DvaModel<G> = {

@@ -5,13 +5,6 @@ import MainWrapper from 'modules/MainWrapper/Page';
 import getLoginPage from 'routes/User';
 import NProgress from 'nprogress'
 
-declare namespace JSX {
-  interface IntrinsicElements {
-    da: { requiredProp: string; optionalProp?: number },
-    ba: any
-  }
-}
-
 function RouterConfig({ history, app }) {
   // return <ba />
   return (
