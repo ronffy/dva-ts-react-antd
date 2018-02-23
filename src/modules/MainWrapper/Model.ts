@@ -4,10 +4,6 @@ import { DvaModel } from 'interfaces/index';
 interface G {
 
 }
-type ns = number | string;
-let n: ns = '';
-console.log(n);
-
 
 
 const model: DvaModel<G> = {

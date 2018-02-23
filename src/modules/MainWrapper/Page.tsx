@@ -5,6 +5,7 @@ import classnames from 'classnames'
 import { Link, withRouter } from 'dva/router'
 import { LAYOUT_NAMESPACE } from 'configs/ConstConfig'
 import WithCommonProps from 'domainComponents/WithCommonProps'
+import Demo from './demo'
 const styles = require("./styles.less")
 
 function thefn(cb: (n: number) => number): number {
@@ -157,7 +158,7 @@ class IndexPage extends React.Component<any, any>{
     return (
       <div className={pageClasses}>
         {children}
-        <div />
+        <Demo />
         <DatePicker />
         <Icon type="link" />
         <Button type="primary">{greeter({ name: 'whr', age: 3, childs: [1, 2], friends: ['she', 'he'], other: '哈哈' })}</Button>
