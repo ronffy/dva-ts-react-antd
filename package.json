@@ -46,6 +46,8 @@
     "roadhog": "^1.2.1",
     "sass-loader": "^6.0.6",
     "ts-node": "^3.3.0",
+    "tslint": "^5.9.1",
+    "tslint-react": "^3.5.1",
     "typescript": "^2.6.2",
     "typescript-eslint-parser": "^13.0.0"
   }

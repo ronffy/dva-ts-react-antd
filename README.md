@@ -1,5 +1,9 @@
+# react + dva + typescript
 
+## 介绍
 
-项目搭建过程中遇到的问题：
-1，没有tslint.json // 已解决： http://react-china.org/t/eslint-typescript-react/16711
-2，
+-   react
+-   [typescript](https://github.com/Microsoft/TypeScript) JS的强类型版本
+-   [dva](https://github.com/dvajs/dva) 基于 [redux](https://github.com/reactjs/redux)、[redux-saga](https://github.com/redux-saga/redux-saga) 和 [react-router](https://github.com/ReactTraining/react-router) 的轻量级前端框架。
+-   [Ant Design](https://ant.design/docs/react/introduce-cn) 基于react的UI库
+-   [tslint](https://github.com/palantir/tslint)

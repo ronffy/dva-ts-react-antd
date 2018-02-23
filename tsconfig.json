@@ -5,7 +5,7 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "jsx": "react", //自动把tsx变成最终的js, 而不是jsx
+    "jsx": "react", 
     "allowJs": true,
     "baseUrl": "./src",
     "moduleResolution": "node",

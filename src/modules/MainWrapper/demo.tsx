@@ -1,16 +1,27 @@
-import React from 'react'
-import { Button } from 'antd'
+import React from 'react';
+import { Button } from 'antd';
+import request from '../../utils/request';
 
-interface G{
-  n: number
+interface G {
+  readonly n: number;
+  m: string[];
 }
 
+let a: G;
+
 class Comp extends React.Component {
-  render(){
+  /**
+   * method
+   * @param 
+   */
+  public method() {
+    request('');
+  }
+  render() {
     return (
       <Button>点我</Button>
-    )
+    );
   }
 }
 
-export default Comp
+export default Comp;
