@@ -2,11 +2,11 @@ import { NAMESPACE } from './ConstConfig'
 import { DvaModel } from 'interfaces/index';
 
 interface G {
-  g: number
+
 }
-
-console.log(3);
-
+type ns = number | string;
+let n: ns = '';
+console.log(n);
 
 
 

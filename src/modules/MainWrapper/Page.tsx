@@ -7,21 +7,36 @@ import { LAYOUT_NAMESPACE } from 'configs/ConstConfig'
 import WithCommonProps from 'domainComponents/WithCommonProps'
 const styles = require("./styles.less")
 
-// 非TS环境下：
-let x = 5;
-// 等同于：
-// let x: any = 5;
-// x = []; // OK
+function thefn(cb: (n: number) => number): number {
+  return cb(3)
+}
 
-console.log(3);
+thefn(() => 3)
+
+type ns = number | string;
+let n: ns = 'name';
+
+type cb = (n: string) => void;
+let fn:cb = (n: string): void => { /**/ }
 
 
+type effects = 'scroll' | 'routate' | 'scale';
+function animate(effect: effects) { /**/ }
+animate('routate')
+
+
+class C3{
+  public name: string;
+  constructor(name){
+    this.name = name
+  }
+}
 
 
 
 
 // TS环境下：¨
-let n = 0;
+// let n = 0;
 // 等同于：
 // let n: number = 0;
 // n = []; // Error
@@ -77,18 +92,18 @@ function identity<T>(arg: T): T { //T： 类型变量
 let a = identity(3);
 console.log(a);
 
+let arr: Array<number> = [1, 2];
+
+let x: (number | string) = 3;
+
 
 class C {
   public x: number;
   a: string;
   constructor(x: number, a: string, public b: number  = 3) {
-    this.x = x
-  }
-  do2(){
-    console.log('do2', this);
-  }
-  do = () => {
-    console.log('do', this);
+    this.x = x;
+    this.a = a;
+    this.b = b;
   }
 }
 
@@ -104,24 +119,9 @@ interface N{
   n1: number,
   n2: string
 }
-
-function fn1(params:N) {
-  console.log(params.n2);
-}
-
-// 想要使用接口N的部分参数控制， 使用断言
+function fn1(params:N) { /**/ }
 fn1({ n1: 3 } as N)
 
-
-interface M{
-  m1: number,
-  [propName: string]: any,
-}
-
-function fnm(params:M) {
-  console.log(params.m3);
-}
-fnm({ m1: 1, m3: 123 })
 
 
 class C2 {
@@ -137,29 +137,9 @@ const mapStateToProps = state => {
   return {
   }
 }
-
-
-
-// 命名空间在使用模块时几乎没什么价值
-
-
-// 不要定义一个从来没使用过其类型参数的泛型类型
-
-
-// 某种程度上来说，void类型像是与any类型相反，它表示没有任何类型
-// void 只能为它赋予undefined和null
-// 如果回调函数无返回值，则用void，不要用 any 
-function method(): void {
-  console.log(1);
+interface G2{
+  name?: string
 }
-function fn(cb: () => void): void {
-  cb()
-  // cb().do(); // 帮助检测cb无返回值
-}
-fn(method)
-
-
-
 @withRouter
 @WithCommonProps
 @connect(mapStateToProps)
@@ -178,6 +158,7 @@ class IndexPage extends React.Component<any, any>{
       <div className={pageClasses}>
         {children}
         <div />
+        <DatePicker />
         <Icon type="link" />
         <Button type="primary">{greeter({ name: 'whr', age: 3, childs: [1, 2], friends: ['she', 'he'], other: '哈哈' })}</Button>
       </div>
