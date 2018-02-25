@@ -1,14 +1,9 @@
-import {
-  LAYOUT_NAMESPACE,
-  DARK_THEME,
-  LIGHT_THEME
-} from 'configs/ConstConfig'  
 
 
+const NAMESPACE = 'layout';
 export default {
-  namespace: LAYOUT_NAMESPACE,
+  namespace: NAMESPACE,
   state: {
-    theme: LIGHT_THEME
   },
   reducers: {
     changeTheme: (preState, { payload }) => {

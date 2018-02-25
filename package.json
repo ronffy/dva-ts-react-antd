@@ -14,11 +14,13 @@
     "classnames": "^2.2.5",
     "dva": "^2.0.4",
     "dva-loading": "^1.0.3",
+    "dva-model-extend": "^0.1.2",
     "moment": "^2.19.1",
     "nprogress": "^0.2.0",
     "ramda": "^0.25.0",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "react-helmet": "^5.2.0"
   },
   "devDependencies": {
     "@types/chai": "^4.0.8",
