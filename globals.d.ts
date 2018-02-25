@@ -10,6 +10,11 @@ declare module "*.scss" {
   export default content;
 }
 
+declare module "*.less" {
+  const content: any;
+  export default content;
+}
+
 declare module "*.json" {
   const content: object;
   export default content;
