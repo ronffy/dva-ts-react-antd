@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { connect } from 'dva';
 
+const NAMESPACE = 'demo';
+
 @connect((state) => ({
-	name: state.demo.name
+	name: state[NAMESPACE].name
 }))
 class Demo extends React.Component<any, any>{
 	render(){
 		console.log(this.props);
 		return (
 			<div>
-				好的{this.props.name}
+				我是demo: {this.props.name}
       </div>
 		)
 	}
