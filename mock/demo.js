@@ -1,10 +1,10 @@
 /**
- * 左侧菜单栏
- * by whr
- * 2017.10.12
+ * demo
+ * author: whr
+ * time: 2018.2.20
  */
 
-const { apiPrefix, Mock } = require('./common');
+const { apis, Mock } = require('./common');
 
 const getData = (ROLE) => {
   return Mock.mock({
@@ -19,7 +19,7 @@ const getData = (ROLE) => {
 
 module.exports = {
 
-  [`GET ${apiPrefix}/demo/api1`] (req, res) {
+  [`GET ${apis.demo.demoapi1}`] (req, res) {
     setTimeout(() => {
       res.status(200).json(getData())
     }, 100);

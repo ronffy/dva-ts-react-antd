@@ -16,8 +16,8 @@
       "components": [
         "components"
       ],
-      "domainComponents": [
-        "domainComponents"
+      "apis": [
+        "configs/apis"
       ],
       "utils": [
         "utils"

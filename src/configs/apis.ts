@@ -1,18 +1,37 @@
 /**
  * apis 接口文件
- * author: xxx
- * time: xxx
+ * author: whr
+ * time: 2018.2.26
  */
-const apiPrefix = 'http://www.baidu.com';
-const apis = {
-  apiPrefix,
-  demo: {
-    demoapi1: `${apiPrefix}/demo/api1`,
-    demoapi2: `${apiPrefix}/demo/api2`,
+/* global process */
+const devApiPrefix = 'http://www.xxx.com';
+const prodApiPrefix = 'http://www.yyy.com';
+
+let apis: any = {
+  devApiPrefix,
+  prodApiPrefix,
+};
+
+if (process.env.NODE_ENV === 'development') {
+  apis = {
+    ...apis,
+    demo: {
+      demoapi1: `${devApiPrefix}/demo/api1`,
+      demoapi2: `${devApiPrefix}/demo/api2`,
+    },
   }
 }
 
+apis = {
+  demo: {
+    demoapi1: `${prodApiPrefix}/demo/api1`,
+    demoapi2: `${prodApiPrefix}/demo/api2`,
+  },
+  ...apis,
+}
+
 export {
-  apiPrefix,
+  devApiPrefix,
+  prodApiPrefix,
   apis
 }
