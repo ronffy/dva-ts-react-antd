@@ -7,20 +7,11 @@ import modelExtend from 'dva-model-extend'
 import { commonModel } from 'models/common'
 import { DvaModel, ReduxAction, ReduxSagaEffects } from 'interfaces/index'
 import { queryDemo } from 'services/demo';
+import { DemoState } from 'interfaces/demo';
 
 const NAMESPACE = 'demo';
 
-interface ListItem {
-  id: number;
-  name: string;
-}
-
-interface I{
-  name: string;
-  list: ListItem[];
-}
-
-const model: DvaModel<I> = {
+const model: DvaModel<DemoState> = {
   namespace: NAMESPACE,
   state: {
     name: 'whr',

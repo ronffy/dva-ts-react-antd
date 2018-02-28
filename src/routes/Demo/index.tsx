@@ -1,13 +1,9 @@
 import * as React from 'react';
 import { connect } from 'dva';
 import { Button, Card } from 'antd';
+import { ListItem } from 'interfaces/demo';
 
 const NAMESPACE = 'demo';
-
-interface ListItem {
-	id: number;
-	name: string;
-}
 
 interface DemoProps {
 	dispatch: any;
