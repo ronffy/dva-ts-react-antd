@@ -16,9 +16,6 @@
       "components": [
         "components"
       ],
-      "apis": [
-        "configs/apis"
-      ],
       "utils": [
         "utils"
       ],
@@ -39,6 +36,9 @@
       ],
       "assets": [
         "assets"
+      ],
+      "services": [
+        "services"
       ]
     }
   },

@@ -1,10 +1,5 @@
-/**
- * mock公共的配置文件
- * author: whr
- * time: 2018.2.20
- */
-const Mock = require('mockjs')
-const { devApiPrefix, apis } = require('./src/configs/apis');
+const Mock = require('mockjs');
+const { Apis } = require('../src/configs');
 
 const NOTFOUND = {
   message: 'Not Found',
@@ -13,6 +8,6 @@ const NOTFOUND = {
 module.exports = {
   NOTFOUND,
   Mock,
-  devApiPrefix,
-  apis,
+  devApiPrefix: Apis.devApiPrefix,
+  apis: Apis.apis,
 }

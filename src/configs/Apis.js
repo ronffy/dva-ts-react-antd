@@ -4,10 +4,10 @@
  * time: 2018.2.26
  */
 /* global process */
-const devApiPrefix = 'http://www.xxx.com';
-const prodApiPrefix = 'http://www.yyy.com';
+const devApiPrefix = '/devApi';
+const prodApiPrefix = 'http://www.prodApi.com';
 
-let apis: any = {
+let apis = {
   devApiPrefix,
   prodApiPrefix,
 };
@@ -30,8 +30,9 @@ apis = {
   ...apis,
 }
 
-export {
+export default {
+  CORS: [prodApiPrefix],
   devApiPrefix,
   prodApiPrefix,
-  apis
+  apis,
 }

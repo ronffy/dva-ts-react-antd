@@ -1,9 +1,3 @@
-/**
- * demo
- * author: whr
- * time: 2018.2.20
- */
-
 const { apis, Mock } = require('./common');
 
 const getData = (ROLE) => {
@@ -20,9 +14,7 @@ const getData = (ROLE) => {
 module.exports = {
 
   [`GET ${apis.demo.demoapi1}`] (req, res) {
-    setTimeout(() => {
-      res.status(200).json(getData())
-    }, 100);
+    res.status(200).json(getData())
   },
 
 }
