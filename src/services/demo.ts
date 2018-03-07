@@ -9,9 +9,10 @@ const apis = Apis.apis;
 
 console.log('apis - ', apis);
 
-
-export function queryDemo() {
+export async function queryDemo(data: any): Promise<any> {
   return request({
     url: apis.demo.demoapi1,
+    method: 'GET',
+    data,
   });
 }

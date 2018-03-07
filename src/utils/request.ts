@@ -17,7 +17,7 @@ const fetch = (options) => {
     fetchType,
     url,
   } = options
-  let cloneData = lodash.cloneDeep(delEmptyProp(data)) || {}; //eslint-disable-line
+  let cloneData = lodash.cloneDeep(data) || {}; //eslint-disable-line
 
   try {
     let domin = ''
@@ -63,7 +63,6 @@ const fetch = (options) => {
         data: cloneData,
       })
     case 'post':
-      axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       return axios.post(url, cloneData)
     case 'put':
       return axios.put(url, cloneData)
@@ -101,7 +100,7 @@ export default function request(options: any) {
     const { response, config = {} } = error
     let msg
     let statusCode
-    if (response && response instanceof Object) {
+    if (response && lodash.isPlainObject(response)) {
       const { data, statusText } = response
       statusCode = response.status
       msg = data.message || statusText
@@ -111,20 +110,4 @@ export default function request(options: any) {
     }
     return Promise.reject({ success: false, statusCode, message: msg, url: config.url })
   })
-}
-
-/**
- * 删除对象的属性值为空的项
- * by whr   //canNull字段是可以为''
- */
-const canNull = 'canNull';
-function delEmptyProp(obj: any) {
-  if (!lodash.isObject(obj) || lodash.isEmpty(obj)) { return obj; }
-  obj = lodash.cloneDeep(obj);
-  if (obj[canNull] !== 1) {
-    for (let p of Object.keys(obj)) {
-      if (obj[p] === '') { delete obj[p] }
-    }
-  }
-  return obj
 }
