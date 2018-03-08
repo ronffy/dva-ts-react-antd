@@ -8,7 +8,11 @@ import LayoutModel from 'models/layout'
 import './themes/common.less'
 
 const app = dva({
-  history: createHistory()
+  history: createHistory(),
+  onStateChange(state: any){
+    // window.__state__ = state;
+    
+  }
 });
 
 // 2. Plugins

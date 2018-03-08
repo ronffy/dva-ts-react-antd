@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack'
 import aliasConfig from './alias.configs'
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = (webpackConfig, env) => {
   const production = env === 'production'
@@ -16,8 +17,6 @@ module.exports = (webpackConfig, env) => {
     "react-dom",
     "moment"
   ]
-
-
 
   if (production) {
     webpackConfig.plugins.push(
@@ -54,6 +53,12 @@ module.exports = (webpackConfig, env) => {
   webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     filename: "vendor.js"
+  }))
+  webpackConfig.plugins.push(new HtmlWebpackPlugin({
+    //模板为同级目录下的index.html，为何不用写路径，是因为默认上下文问webpack.config.js所在的文件夹
+    template: `${__dirname}/src/index.ejs`,
+    //自动生成HTML文件的名字
+    filename: production ? '../index.html' : 'index.html',
   }))
 
 

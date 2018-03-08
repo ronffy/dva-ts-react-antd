@@ -7,8 +7,6 @@ import request from 'utils/request';
 import { Apis } from 'configs';
 const apis = Apis.apis;
 
-console.log('apis - ', apis);
-
 export async function queryDemo(data: any): Promise<any> {
   return request({
     url: apis.demo.demoapi1,

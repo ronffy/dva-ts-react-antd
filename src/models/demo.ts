@@ -26,8 +26,6 @@ const model: DvaModel<DemoState> = {
           list: data
         }
       })
-      console.log(data);
-      
     }
   }
 }

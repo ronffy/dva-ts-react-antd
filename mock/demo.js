@@ -1,4 +1,4 @@
-const { apis, Mock } = require('./common');
+const { apis, Mock } = require('./common').default;
 
 const getData = (ROLE) => {
   return Mock.mock({

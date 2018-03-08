@@ -28,7 +28,6 @@ class Demo extends React.Component<DemoProps, any>{
 		})
 	}
 	render(){
-		console.log(this.props);
 		return (
 			<Card title={this.props.name}>
 				<Button onClick={this.getData}>点我请求数据</Button>

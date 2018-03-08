@@ -7,7 +7,7 @@
 const devApiPrefix = '/devApi';
 const prodApiPrefix = 'http://www.prodApi.com';
 
-let apis = {
+let apis: any = {
   devApiPrefix,
   prodApiPrefix,
 };

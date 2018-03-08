@@ -1,15 +1,15 @@
 const LAST_REQ_TIME = '@@DVA_LAST_EFFECT_TIME';
 
 const defaultOpts = {
-    namespace: "lastEffectTime"
+    namespace: 'lastEffectTime'
 }
 
 const defaultPayload = {
-    namespace: "",
-    actionType: ""
+    namespace: '',
+    actionType: ''
 }
 
-function createLastEffectTime(opts = defaultOpts) {
+function createLastEffectTime(opts: any = defaultOpts) {
     const { namespace } = opts;
     const initialState = {
         global: 0,
@@ -39,9 +39,9 @@ function createLastEffectTime(opts = defaultOpts) {
         },
     };
 
-    function onEffect(effect, { put }, model, actionType) {
+    function onEffect(effect: any, { put }: any, model: any, actionType: any) {
         const { namespace } = model;
-        return function* (...args) {
+        return function* (...args: any[]) {
             yield effect(...args);
             yield put({ type: LAST_REQ_TIME, payload: { namespace, actionType } });
         };
