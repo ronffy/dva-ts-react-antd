@@ -1,4 +1,4 @@
-const Mock = require('mockjs').default;
+const Mock = require('mockjs');
 
 const NOTFOUND = {
   message: 'Not Found',
@@ -15,7 +15,6 @@ let apis = {
 
 module.exports = {
   NOTFOUND,
-  Mock,
   devApiPrefix,
   apis,
 }
