@@ -63,7 +63,7 @@ npm run build
 ├── tsconfig.json      # TypeScript配置
 ├── alias.config.js    # 配置webpackConfig.resolve.alias
 ├── .roadhogrc.mock.js # 配置mock
-├── globals.d.ts       # TS全局声明文件
+├── globals.d.ts       # 配置TS全局的声明文件
 ├── tslint.json        # TSlint配置
 └── webpackrc.js       # roadhog配置
 ```
