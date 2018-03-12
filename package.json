@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "set PORT=8002&&roadhog dev",
+    "dev": "cross-env PORT=8002&&roadhog dev",
     "build": "roadhog build",
     "test": "mocha -r ./test/register test/**/*.ts"
   },

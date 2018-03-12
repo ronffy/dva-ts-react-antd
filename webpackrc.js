@@ -6,6 +6,12 @@ export default {
   "outputPath": './dist/static',
   "publicPath": '/static/',
   "theme": "./theme.config.js",
+  copy: [
+    {
+      form: 'src/public',
+      to: './dist/static',
+    }
+  ],
   "env": {
     "development": {
       "extraBabelPlugins": [

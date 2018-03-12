@@ -43,12 +43,12 @@ module.exports = (webpackConfig, env) => {
   // webpackConfig.module.rules[7].use.pop();
 
   webpackConfig.resolve.alias = aliasConfig
-  webpackConfig.plugins.push(new CopyWebpackPlugin([
-    {
-      from: 'src/public',
-      to: webpackConfig.output.outputPath,
-    },
-  ]))
+  // webpackConfig.plugins.push(new CopyWebpackPlugin([
+  //   {
+  //     from: 'src/public',
+  //     to: webpackConfig.output.outputPath,
+  //   },
+  // ]))
   webpackConfig.plugins.push(new webpack.HashedModuleIdsPlugin())
   webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
