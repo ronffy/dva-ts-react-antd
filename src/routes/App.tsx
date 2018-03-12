@@ -37,15 +37,11 @@ class App extends React.Component<any, any>{
 					<div id="mainBoxDOM" >
 						<div className={styles.container} >
 							<div className={styles.content}>
-								{true ? children : < Error />}
+								{true ? children : <Error />}
 							</div>
 						</div>
 					</div>
 				</div>
-				{/* <BackTop 
-				visibilityHeight={0} 
-				target={() => { return document.getElementsByClassName(styles.main)[0]; }} 
-			/> */}
 			</div>
 		)
 	}
