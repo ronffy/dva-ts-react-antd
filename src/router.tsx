@@ -18,7 +18,7 @@ interface RoutersProps{
 const Routers = function ({ history, app }: RoutersProps) {
   const error = dynamic({
     app,
-    component: () => import('./routes/error'),
+    component: () => import('./routes/Error'),
   })
 
   const routes = [

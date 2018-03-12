@@ -29,8 +29,8 @@ class Demo extends React.Component<DemoProps, any>{
 	}
 	render(){
 		return (
-			<Card title={this.props.name}>
-				<Button onClick={this.getData}>点我请求数据</Button>
+			<Card title={'恭喜：项目成功跑起来了！'}>
+				<Button type="primary" onClick={this.getData}>点我请求数据</Button>
 				<ul>
 					{
 						this.props.list.map(({ id, name }: ListItem): JSX.Element => {

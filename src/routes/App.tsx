@@ -7,7 +7,7 @@ import { Loader } from 'components'
 import { Helmet } from 'react-helmet'
 import { withRouter } from 'dva/router'
 import 'themes/default.less'
-import Error from './error'
+import Error from './Error'
 import styles from './app.less'
 
 @withRouter
