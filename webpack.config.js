@@ -3,12 +3,13 @@ import webpack from 'webpack'
 import aliasConfig from './alias.configs'
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = (webpackConfig, env) => {
   const production = env === 'production'
 
-  webpackConfig.output.filename = '[name].[hash].bundle.js';
-  webpackConfig.output.chunkFilename = '[name].[chunkhash].async.js';
+  webpackConfig.output.filename = 'mceo.[name].[hash].bundle.js';
+  webpackConfig.output.chunkFilename = 'mceo.[name].[chunkhash].async.js';
 
   webpackConfig.entry.vendor = [
     "dva",
@@ -18,6 +19,8 @@ module.exports = (webpackConfig, env) => {
     "moment"
   ]
 
+
+
   if (production) {
     webpackConfig.plugins.push(
       new webpack.LoaderOptionsPlugin({
@@ -25,6 +28,9 @@ module.exports = (webpackConfig, env) => {
         debug: false,
       })
     )
+    // webpackConfig.plugins.push(
+    //   new ExtractTextPlugin('mceo.[name].css')
+    // )
   }
   // const lessRule = webpackConfig.module.rules[3];
 
@@ -43,24 +49,26 @@ module.exports = (webpackConfig, env) => {
   // webpackConfig.module.rules[7].use.pop();
 
   webpackConfig.resolve.alias = aliasConfig
-  // webpackConfig.plugins.push(new CopyWebpackPlugin([
-  //   {
-  //     from: 'src/public',
-  //     to: webpackConfig.output.outputPath,
-  //   },
-  // ]))
+  webpackConfig.plugins.push(new CopyWebpackPlugin([
+    {
+      from: 'src/public',
+      to: production ? '../' : webpackConfig.output.outputPath,
+    },
+  ]))
   webpackConfig.plugins.push(new webpack.HashedModuleIdsPlugin())
   webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
-    filename: "vendor.js"
-  }))
-  webpackConfig.plugins.push(new HtmlWebpackPlugin({
-    //模板为同级目录下的index.html，为何不用写路径，是因为默认上下文问webpack.config.js所在的文件夹
-    template: `${__dirname}/src/index.ejs`,
-    //自动生成HTML文件的名字
-    filename: production ? '../index.html' : 'index.html',
+    filename: "mceo.[name].[hash].js"
   }))
 
+  webpackConfig.plugins.push(new HtmlWebpackPlugin({
+      //模板为同级目录下的index.html，为何不用写路径，是因为默认上下文问webpack.config.js所在的文件夹
+      template: `${__dirname}/src/index.ejs`,
+      //自动生成HTML文件的名字
+      filename: production ? '../mceo-index.html' : 'mceo-index.html',
+    }))
+
+  
 
   return webpackConfig;
 };

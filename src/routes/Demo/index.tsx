@@ -1,7 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import { connect } from 'dva';
 import { Button, Card } from 'antd';
 import { ListItem } from 'interfaces/demo';
+
+// import 'antd/dist/antd.css'
 
 const NAMESPACE = 'demo';
 

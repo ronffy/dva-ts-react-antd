@@ -5,20 +5,23 @@ import createLastEffectTime from 'utils/dvaLastEffectTime'
 import createHistory from 'history/createBrowserHistory'
 import * as tools from 'utils/tools'
 import LayoutModel from 'models/layout'
+import { createLogger } from 'redux-logger';
 import './themes/common.less'
 
 const app = dva({
+  // onAction: createLogger(),
   history: createHistory(),
   onStateChange(state: any){
-    // window.__state__ = state;
-    
-  }
+    window.__state__ = state;
+  },
 });
 
 // 2. Plugins
 app.use(createLoading({ effects: true }));
 app.use(createLastEffectTime());
+
 // 3. Model
+// app.model(require('./models/app'))
 
 // 4. Router
 app.router(router);

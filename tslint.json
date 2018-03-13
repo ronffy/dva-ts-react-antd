@@ -2,22 +2,14 @@
 	"extends": [
 		"tslint-react"
 	],
-	"global": {
-		"process": true
-	},
 	"rules": {
-		"align": [
-			true,
-			"parameters",
-			"arguments",
-			"statements"
-		],
+		"align": false,
 		"ban": false,
 		"class-name": true,
 		"jsx-curly-spacing": false,
 		"jsx-boolean-value": false,
 		"comment-format": false,
-		"curly": true,
+		"curly": false,
 		"eofline": false,
 		"forin": true,
 		"indent": false,
@@ -44,7 +36,7 @@
 		"no-string-literal": true,
 		"no-switch-case-fall-through": true,
 		"no-trailing-whitespace": false,
-		"no-unused-expression": true,
+		"no-unused-expression": false,
 		"no-use-before-declare": true,
 		"one-line": false,
 		"quotemark": [

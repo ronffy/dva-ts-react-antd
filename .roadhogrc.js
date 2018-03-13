@@ -1,17 +1,11 @@
 export default {
   "entry": "./src/index.tsx",
+  "outputPath": './dist/mceo',
+  "publicPath": '/mceo/',
   // "proxy": {
   //   "/api": "http://172.31.50.78:7300/mock/59aceff89b1b9039308834b0/acs"
   // },
-  "outputPath": './dist/static',
-  "publicPath": '/static/',
   "theme": "./theme.config.js",
-  copy: [
-    {
-      form: 'src/public',
-      to: './dist/static',
-    }
-  ],
   "env": {
     "development": {
       "extraBabelPlugins": [
