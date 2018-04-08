@@ -34,6 +34,9 @@ declare const System: System
 
 declare module 'react-async-component';
 
+interface Window {
+  __state__: any;
+}
 
 declare namespace Mocha {
   export interface IContextDefinition { }
