@@ -1,7 +1,7 @@
 /**
  * demo 的services
  * 2018.2.26
- * author: whr
+ * @author: whr
  */
 import request from 'utils/request';
 import { Apis } from 'configs';
