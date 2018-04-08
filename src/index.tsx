@@ -7,12 +7,17 @@ import * as tools from 'utils/tools'
 import LayoutModel from 'models/layout'
 import { createLogger } from 'redux-logger';
 import './themes/common.less'
+import { message } from 'antd';
 
 const app = dva({
   // onAction: createLogger(),
   history: createHistory(),
   onStateChange(state: any){
     window.__state__ = state;
+  },
+  onError(error: any) {
+    console.error(`全局error: ${error}`);
+    message.error(`出错了: ${error}`);
   },
 });
 
