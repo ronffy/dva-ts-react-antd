@@ -18,19 +18,19 @@ interface RoutersProps{
 const Routers = function ({ history, app }: RoutersProps) {
   const error = dynamic({
     app,
-    component: () => import('./routes/Error'),
+    component: () => System.import('./routes/Error'),
   })
 
   const routes = [
     { //一些demo可以写在这个页面上，
       path: '/home',
-      models: () => [import('./models/demo')],
-      component: () => import('./routes/Demo/'),
+      models: () => [System.import('./models/demo')],
+      component: () => System.import('./routes/Demo/'),
     },
     { //一些demo可以写在这个页面上，
       path: '/_test',
-      // models: () => [import('./models/_test')],
-      component: () => import('./routes/_test/'),
+      // models: () => [System.import('./models/_test')],
+      component: () => System.import('./routes/_test/'),
     },
   ];
   return (
@@ -58,11 +58,6 @@ const Routers = function ({ history, app }: RoutersProps) {
       </LocaleProvider>
     </ConnectedRouter>
   )
-}
-
-Routers.propTypes = {
-  history: PropTypes.object,
-  app: PropTypes.object,
 }
 
 export default Routers
