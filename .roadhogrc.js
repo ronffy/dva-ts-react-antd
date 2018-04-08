@@ -1,7 +1,6 @@
 export default {
   "entry": "./src/index.tsx",
-  "outputPath": './dist/mceo',
-  "publicPath": '/mceo/',
+  "outputPath": './dist',
   // "proxy": {
   //   "/api": "http://172.31.50.78:7300/mock/59aceff89b1b9039308834b0/acs"
   // },
