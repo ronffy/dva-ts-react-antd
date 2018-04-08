@@ -5,7 +5,7 @@
  */
 export interface ListItem {
     id: number;
-    name: string;
+    title: string;
 }
 
 export interface DemoState {

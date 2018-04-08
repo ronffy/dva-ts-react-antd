@@ -8,6 +8,7 @@ import { commonModel } from 'models/common'
 import { DvaModel, ReduxAction, ReduxSagaEffects } from 'interfaces/index'
 import { queryDemo } from 'services/demo';
 import { DemoState } from 'interfaces/demo';
+import { objToArray } from '../utils/tools/index';
 
 const NAMESPACE = 'demo';
 
@@ -19,11 +20,11 @@ const model: DvaModel<DemoState> = {
   },
   effects: {
     *queryDemo({ payload }: ReduxAction, { call, put }: ReduxSagaEffects): any {
-      let { data } = yield call(queryDemo);
+      let data = yield call(queryDemo);
       yield put({
         type: 'updateState',
         payload: {
-          list: data
+          list: objToArray(data),
         }
       })
     }

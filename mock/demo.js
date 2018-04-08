@@ -12,6 +12,6 @@ const data = Mock.mock({
 
 module.exports = {
 
-  [`GET ${apis.demo.demoapi1}`]: data,
+  [`GET ${apis.demo.demoapi1}`]: data.data,
 
 }

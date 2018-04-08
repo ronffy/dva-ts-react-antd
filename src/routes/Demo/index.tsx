@@ -35,8 +35,8 @@ class Demo extends React.Component<DemoProps, any>{
 				<Button type="primary" onClick={this.getData}>点我请求数据</Button>
 				<ul>
 					{
-						this.props.list.map(({ id, name }: ListItem): JSX.Element => {
-							return (<li key={id}>{name}</li>)
+						this.props.list.map(({ id, title }: ListItem): JSX.Element => {
+							return (<li key={id}>{title}</li>)
 						})
 					}
 				</ul>
