@@ -12,15 +12,15 @@ let apis: any = {
   prodApiPrefix,
 };
 
-// if (process.env.NODE_ENV === 'development') {
-//   apis = {
-//     ...apis,
-//     demo: {
-//       demoapi1: `${devApiPrefix}/demo/api1`,
-//       demoapi2: `${devApiPrefix}/demo/api2`,
-//     },
-//   }
-// }
+if (process.env.NODE_ENV === 'development') {
+  apis = {
+    ...apis,
+    demo: {
+      demoapi1: `${devApiPrefix}/demo/api1`,
+      demoapi2: `${devApiPrefix}/demo/api2`,
+    },
+  }
+}
 
 apis = {
   demo: {

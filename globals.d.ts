@@ -38,6 +38,10 @@ interface Window {
   __state__: any;
 }
 
+declare let process: {
+  [propName: string]: any
+}
+
 declare namespace Mocha {
   export interface IContextDefinition { }
   export interface ITestDefinition { }
