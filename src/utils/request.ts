@@ -34,7 +34,7 @@ const fetch = (options) => {
     }
     url = domin + url
   } catch (e) {
-    message.error(e.message)
+    return Promise.reject(e);
   }
 
   if (fetchType === 'JSONP') {

@@ -3,15 +3,50 @@ import { connect } from 'dva';
 import { Button, Card } from 'antd';
 import { ListItem } from 'interfaces/demo';
 
-// import 'antd/dist/antd.css'
+const getDisplayName = (WarpedComponent) => WarpedComponent.displayName || WarpedComponent.name || 'Component';
+
+const MyContainer = (WarpedComponent): any => class extends WarpedComponent {
+	static displayName = `HOC${getDisplayName(WarpedComponent)}`
+	render() {
+		const tree = super.render();
+		const oldStyle = tree.props.style || {};
+		const newProps = {
+			style: {
+				...oldStyle,
+				fontSize: '30px',
+			}
+		}
+		const props = {
+			...tree.props,
+			...newProps,
+		}
+		const element = React.cloneElement(tree, props, tree.props.children)
+		return element
+	}
+}
+
+@MyContainer
+class MyComponent extends React.Component {
+	render() {
+		return (
+			<div style={{ background: 'blue' }}>
+				我是组件内容
+			</div>
+		)
+	}
+}
+
+
+
 
 const NAMESPACE = 'demo';
 
 interface DemoProps {
-	dispatch: any;
+	dispatch?: any;
 	name: string;
 	list: ListItem[];
 }
+
 
 @connect((state) => ({
 	name: state[NAMESPACE].name,
@@ -32,6 +67,7 @@ class Demo extends React.Component<DemoProps, any>{
 	render(){
 		return (
 			<Card title={'恭喜：项目成功跑起来了！'}>
+				<MyComponent />
 				<Button type="primary" onClick={this.getData}>点我请求数据</Button>
 				<ul>
 					{
