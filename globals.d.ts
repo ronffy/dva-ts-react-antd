@@ -42,6 +42,19 @@ declare let process: {
   [propName: string]: any
 }
 
+interface CommonElement {
+  styleName?: string;
+  [propName: string]: any;
+}
+
+declare namespace JSX {
+  interface IntrinsicElements {
+    // 给div元素增加styleName属性，为了兼容 react-css-modules 库
+    div: CommonElement;
+    [elemName: string]: any;
+  }
+}
+
 declare namespace Mocha {
   export interface IContextDefinition { }
   export interface ITestDefinition { }
