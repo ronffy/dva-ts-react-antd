@@ -1,6 +1,6 @@
 # 基于Dva和TypeScript的后台管理系统框架
 [![React](https://img.shields.io/badge/react-^16.0.0-brightgreen.svg?style=flat-square)](https://github.com/facebook/react)
-[![Ant Design](https://img.shields.io/badge/roadhog-^1.2.1-yellowgreen.svg?style=flat-square)](https://github.com/sorrycc/roadhog)
+[![roadhog](https://img.shields.io/badge/roadhog-^1.2.1-yellowgreen.svg?style=flat-square)](https://github.com/sorrycc/roadhog)
 [![dva](https://img.shields.io/badge/dva-^2.0.4-orange.svg?style=flat-square)](https://github.com/dvajs/dva)
 [![Ant Design](https://img.shields.io/badge/ant--design-^3.0.0-yellowgreen.svg?style=flat-square)](https://github.com/ant-design/ant-design)
 
@@ -39,7 +39,6 @@ npm run build
 ├── /mock/             # 数据mock
 ├── /src/              # 项目源码目录
 │ ├── /public/         # 公共文件，编译时copy至dist目录
-│ ├── /components/     # UI组件及UI相关方法
 │ ├── /components/     # UI组件及UI相关方法
 │ │ ├── /Component/    # 单个UI组件目录
 │ │ │ ├── index.less   # 单个UI组件的样式
