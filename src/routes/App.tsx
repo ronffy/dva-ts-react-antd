@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import pathToRegexp from 'path-to-regexp'
 import { connect } from 'dva'
 import { Loader } from 'components'
 import { Helmet } from 'react-helmet'
@@ -20,7 +19,7 @@ class App extends React.Component<any, any>{
 		loading: PropTypes.object,
 	}
 	render(){
-		const { children, dispatch, app, loading, location } = this.props;
+		const { children, loading } = this.props;
 		return (
 			<div>
 				<Loader
@@ -29,7 +28,7 @@ class App extends React.Component<any, any>{
 					style={{ transition: 'opacity 1s' }}
 				/>
 				<Helmet>
-					<title>宙斯系统</title>
+					<title>海盗系统</title>
 					<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				</Helmet>
 				<div>

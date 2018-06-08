@@ -4,7 +4,6 @@ import qs from 'qs'
 import jsonp from 'jsonp'
 import lodash from 'lodash'
 import pathToRegexp from 'path-to-regexp'
-import { message } from 'antd'
 import { Apis } from 'configs'
 const { CORS } = Apis;
 

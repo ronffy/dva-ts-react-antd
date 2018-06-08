@@ -1,10 +1,4 @@
 
-export { momentToTimeStampRange } from './moment'
-
-export { getTemp, setTemp, setCache, getCache } from './cache'
-
-export { delay } from './delay'
-
 /**
  * 对象 to 数组 {0: 'a', 1: 'b'} -> ['a', 'b']
  * @param obj 

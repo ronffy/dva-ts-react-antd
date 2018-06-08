@@ -4,11 +4,8 @@
  * 2017.12.9
  */
 import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'dva'
 import { Button } from 'antd'
 import styles from './index.less'
-import lodash from 'lodash'
 
 class TestView extends React.Component<any, any>{
   render(){

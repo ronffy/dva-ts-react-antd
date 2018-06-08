@@ -3,9 +3,6 @@ import router from './router'
 import createLoading from 'dva-loading'
 import createLastEffectTime from 'utils/dvaLastEffectTime'
 import createHistory from 'history/createBrowserHistory'
-import * as tools from 'utils/tools'
-import LayoutModel from 'models/layout'
-import { createLogger } from 'redux-logger';
 import './themes/common.less'
 import { message } from 'antd';
 
