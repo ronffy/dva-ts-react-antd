@@ -1,7 +1,12 @@
-import Loader from './Loader'
-// import * as Layout from './Layout'
+import Iconfont from './Iconfont/Iconfont'
+import Loader from './Loader/Loader'
+import * as MyLayout from './Layout'
+import Page from './Page/Page'
+
 
 export {
-  // Layout,
+  MyLayout,
+  Iconfont,
   Loader,
+  Page,
 }

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "es6",
+    "module": "esNext",
     "target": "es2017",
     "experimentalDecorators": true,
     "sourceMap": true,

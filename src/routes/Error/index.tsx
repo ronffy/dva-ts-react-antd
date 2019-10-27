@@ -1,16 +1,15 @@
 import React from 'react'
-// import { Icon } from 'antd'
-// import styles from './index.less'
+import { Icon } from 'antd'
+import styles from './index.less'
+import { Page } from '../../components'
 
-const Error = () => {
-  return (
-    <div className="content-inner">
-      <div>
-        {/* <Icon type="frown-o" /> */}
-        <h1>404 Not Found</h1>
-      </div>
+const Error = () => (
+  <Page inner>
+    <div className={styles.error}>
+      <Icon type="frown-o" />
+      <h1>404 Not Found</h1>
     </div>
-  )
-}
+  </Page>
+)
 
 export default Error

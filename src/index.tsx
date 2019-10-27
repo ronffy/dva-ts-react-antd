@@ -1,33 +1,25 @@
+import { message } from 'antd'
 import dva from 'dva'
-import router from './router'
 import createLoading from 'dva-loading'
-import createLastEffectTime from 'utils/dvaLastEffectTime'
-import createHistory from 'history/createBrowserHistory'
-import './themes/common.less'
-import { message } from 'antd';
+import { createBrowserHistory } from 'history'
+import 'babel-polyfill'
 
+// 1. Initialize
 const app = dva({
-  // onAction: createLogger(),
-  history: createHistory(),
-  onStateChange(state: any){
-    window.__state__ = state;
+  ...createLoading({
+    effects: true,
+  }),
+  history: createBrowserHistory(),
+  onError (error: Error) {
+    message.error(`dva报错: ${error.message}`)
   },
-  onError(error: any) {
-    console.error(`全局error: ${error}`);
-    message.error(`出错了: ${error}`);
-  },
-});
+})
 
-// 2. Plugins
-app.use(createLoading({ effects: true }));
-app.use(createLastEffectTime());
+// 2. Model
+app.model(require('./models/app'))
 
-// 3. Model
-// app.model(require('./models/app'))
+// 3. Router
+app.router(require('./router'))
 
-// 4. Router
-app.router(router);
-
-// 5. Start
-app.start('#root');
-
+// 4. Start
+app.start('#root')

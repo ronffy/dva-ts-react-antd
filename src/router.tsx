@@ -2,62 +2,62 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Switch, Route, Redirect, routerRedux } from 'dva/router'
 import dynamic from 'dva/dynamic'
-import App from 'routes/App';
-import moment from 'moment';
-import { LocaleProvider } from 'antd';
-import zhCN from 'antd/lib/locale-provider/zh_CN';
-import 'moment/locale/zh-cn';
-moment.locale('zh-cn');
-const { ConnectedRouter } = routerRedux;
+import App from './routes/app'
+import { defaultPageInfo } from './config';
+import { DvaApp, History } from './ts-types';
 
-interface RoutersProps{
-  history: object;
-  app: object;
+const { ConnectedRouter } = routerRedux
+
+type Props = {
+  history: History
+  app: DvaApp
 }
 
-const Routers = function ({ history, app }: RoutersProps) {
+const Routers = function ({ history, app }: Props) {
   const error = dynamic({
     app,
-    component: () => System.import('./routes/Error'),
+    component: () => import('./routes/error'),
   })
-
   const routes = [
-    { //一些demo可以写在这个页面上，
+    {
       path: '/home',
-      models: () => [System.import('./models/demo')],
-      component: () => System.import('./routes/Demo/'),
-    },
-    { //一些demo可以写在这个页面上，
-      path: '/_test',
-      // models: () => [System.import('./models/_test')],
-      component: () => System.import('./routes/_test/'),
-    },
-  ];
+      models: () => [import('./models/home')],
+      component: () => import('./routes/home'),
+    }, {
+      path: '/login',
+      models: () => [import('./models/login')],
+      component: () => import('./routes/login'),
+    }
+  ]
+
   return (
     <ConnectedRouter history={history}>
-      <LocaleProvider locale={zhCN}>
-        <App>
-          <Switch>
-            <Route exact path="/" render={() => (<Redirect to="/home" />)} />
-            {
-              routes.map(({ path, ...dynamics }, key) => (
-                <Route 
-                  key={key}
-                  exact
-                  path={path}
-                  component={dynamic({
-                    app,
-                    ...dynamics,
-                  })}
-                />
-              ))
-            }
-            <Route component={error} />
-          </Switch>
-        </App>
-      </LocaleProvider>
+      <App>
+        <Switch>
+          <Route exact path="/" render={() => (<Redirect to={defaultPageInfo.router} />)} />
+          {
+            routes.map(({ path, ...dynamics }, key) => (
+              <Route
+                key={key}
+                exact
+                path={path}
+                component={dynamic({
+                  app,
+                  ...dynamics,
+                })}
+              />
+            ))
+          }
+          <Route component={error} />
+        </Switch>
+      </App>
     </ConnectedRouter>
   )
+}
+
+Routers.propTypes = {
+  history: PropTypes.object,
+  app: PropTypes.object,
 }
 
 export default Routers

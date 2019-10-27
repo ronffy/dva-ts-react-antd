@@ -1,112 +1,113 @@
-/* global window */
-import axios from 'axios'
+
+import axios, { AxiosRequestConfig, AxiosResponse, AxiosPromise } from 'axios'
+import cloneDeep from 'lodash/cloneDeep'
+import { message } from 'antd'
+import md5 from 'md5'
 import qs from 'qs'
-import jsonp from 'jsonp'
-import lodash from 'lodash'
-import pathToRegexp from 'path-to-regexp'
-import { Apis } from 'configs'
-const { CORS } = Apis;
+import storage from './storage'
+import sortByKey from './sortByKey'
 
-const timeout = 3000;
+export default function request(url: string, options: AxiosRequestConfig = {}): AxiosPromise {
+  let { data } = options
 
-const fetch = (options) => {
-  let {
-    method = 'get',
-    data,
-    fetchType,
-    url,
-  } = options
-  let cloneData = lodash.cloneDeep(data) || {}; //eslint-disable-line
+  options.url = url
+  if (data) {
+    options.params = cloneDeep(data)
+  }
 
-  try {
-    let domin = ''
-    if (url.match(/[a-zA-z]+:\/\/[^/]*/)) {
-      domin = url.match(/[a-zA-z]+:\/\/[^/]*/)[0]
-      url = url.slice(domin.length)
-    }
-    const match: any[] = pathToRegexp.parse(url)
-    url = pathToRegexp.compile(url)(data)
-    for (let item of match) {
-      if (item instanceof Object && item.name in cloneData) {
-        delete cloneData[item.name]
+  return axios(options)
+    .then(response => {
+      const { status, statusText } = response
+      const successed = checkRspStatus(status)
+      if (successed) {
+        return Promise.resolve({
+          ...response,
+          success: true,
+          message: statusText,
+          statusCode: status,
+          data: response.data || {},
+        })
       }
-    }
-    url = domin + url
-  } catch (e) {
-    return Promise.reject(e);
-  }
 
-  if (fetchType === 'JSONP') {
-    return new Promise((resolve, reject) => {
-      jsonp(url, {
-        param: `${qs.stringify(data)}&callback`,
-        name: `jsonp_${new Date().getTime()}`,
-        timeout,
-      },    (error, result) => {
-        if (error) {
-          reject(error)
-        }
-        resolve({ statusText: 'OK', status: 200, data: result })
-      })
+      // 错误提示
+      tipError(response)
+
+      const error = {
+        name: 'http error',
+        message: 'http response status error',
+        config: options,
+        code: `${status}`,
+        response,
+        isAxiosError: false,
+      }
+      return Promise.reject(error)
     })
-  }
+    .catch(error => {
+      const { response } = error
 
-  switch (method.toLowerCase()) {
-    case 'get':
-      return axios.get(url, {
-        params: cloneData,
-        timeout,
+      // 错误提示
+      tipError(response || {
+        ...error,
+        status: 600
       })
-    case 'delete':
-      return axios.delete(url, {
-        data: cloneData,
-      })
-    case 'post':
-      return axios.post(url, cloneData)
-    case 'put':
-      return axios.put(url, cloneData)
-    case 'patch':
-      return axios.patch(url, cloneData)
-    default:
-      return axios({
-        timeout,
-        ...options,
-      })
-  }
-}
 
-export default function request(options: any) {
-  if (options.url && options.url.indexOf('//') > -1) {
-    const origin = `${options.url.split('//')[0]}//${options.url.split('//')[1].split('/')[0]}`
-    if (window.location.origin !== origin) {
-      if (CORS && CORS.indexOf(origin) > -1) {
-        options.fetchType = 'CORS'
+      let msg
+      let statusCode
+
+      if (response && response instanceof Object) {
+        const { statusText } = response
+        statusCode = response.status
+        msg = response.data.message || statusText
       } else {
-        options.fetchType = 'JSONP'
+        statusCode = 600
+        msg = error.message || 'Network Error'
       }
-    }
+
+      /* eslint-disable */
+      return Promise.resolve({
+        ...response,
+        success: false,
+        status: statusCode,
+        message: msg,
+      })
+    })
+}
+
+export function checkRspStatus(status: number) {
+  if (status >= 200 && status < 300) {
+    return true;
   }
 
-  return fetch(options).then((response: any) => {
-    let { statusText, status, data } = response
-    return Promise.resolve({ //eslint-disable-line
-      success: true,
-      message: statusText,
-      statusCode: status,
-      ...data,
-    })
-  }).catch((error) => {
-    const { response, config = {} } = error
-    let msg
-    let statusCode
-    if (response && lodash.isPlainObject(response)) {
-      const { data, statusText } = response
-      statusCode = response.status
-      msg = data.message || statusText
-    } else {
-      statusCode = 600
-      msg = error.message || 'Network Error'
-    }
-    return Promise.reject({ success: false, statusCode, message: msg, url: config.url })
-  })
+  return false;
 }
+
+function tipError(response: AxiosResponse) {
+  const status = response.status;
+
+  switch (status) {
+    case 401:
+      storage.clear();
+      message.error('登录过期，请重新登录');
+      break;
+
+    case 400:
+      message.error('请求错误，请刷新重试');
+      break;
+
+    default:
+      if (status >= 500) {
+        message.error('网络错误，请刷新重试');
+      }
+      // 注意：其他错误的错误提示需要在业务内自行处理
+      break;
+  }
+  console.error('http返回结果的 status 码错误，错误信息是:', response);
+}
+
+export const encryptMD5 = (value, apiKey = 'apikey=sunlandzlcx') => {
+  if (qs.stringify(sortByKey(value))) {
+    return md5(`${apiKey}&${qs.stringify(sortByKey(value), { encode: false })}`)
+  } else {
+    return md5(apiKey);
+  }
+};

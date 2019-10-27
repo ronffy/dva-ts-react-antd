@@ -1,18 +1,19 @@
-import { ReduxAction, DvaModelReducers } from 'interfaces/index'
+/**
+ * 公共 model
+ * @author ronffy
+ */
+import _modelExtend from 'dva-model-extend'
+import { DvaModel } from '../ts-types';
 
-interface CommonModel{
-  reducers: DvaModelReducers
-}
-
-const commonModel: CommonModel = {
+const commonModel = {
   reducers: {
-    updateState(state: object, { payload }: ReduxAction) {
+    updateState (state: any, { payload }: any) {
       return {
         ...state,
         ...payload,
       }
     },
-    error (state: object, { payload }: ReduxAction) {
+    error(state: any, { payload }: any) {
       return {
         ...state,
         error: payload,
@@ -21,6 +22,52 @@ const commonModel: CommonModel = {
   },
 }
 
+const modelExtend = <T>(model: DvaModel<T>): DvaModel<T> => _modelExtend(commonModel, model);
+
+const pageModel = {
+  state: {
+    list: [],
+    pagination: {
+      showTotal: total => `共 ${total} 条`,
+      current: 1,
+      total: 0,
+    },
+  },
+
+  reducers: {
+    querySuccess (state: any, { payload }: any) {
+      const { list, pagination } = payload
+      return {
+        ...state,
+        list,
+        pagination: {
+          ...state.pagination,
+          ...pagination,
+        },
+      }
+    },
+    updateState(state: any, { payload }: any) {
+      return {
+        ...state,
+        ...payload,
+      }
+    },
+    error(state: any, { payload }: any) {
+      return {
+        ...state,
+        error: payload,
+      }
+    },
+  },
+
+}
+
+const pageModelExtend = <T>(model: DvaModel<T>): DvaModel<T> => _modelExtend(pageModel, model);
+
 export {
+  modelExtend,
+  pageModelExtend,
+  
   commonModel,
+  pageModel,
 }
