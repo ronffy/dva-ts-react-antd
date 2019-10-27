@@ -1,11 +1,11 @@
 /* global window */
 /* global document */
 import { routerRedux } from 'dva/router'
-import config from '../config'
-import { storage } from '../utils'
-import { EnumRoleType } from '../utils/enums'
-import * as appService from '../services/app'
-import * as menusService from '../services/menus'
+import config from '@config'
+import { storage } from '@utils'
+import { EnumRoleType } from '@enums'
+import * as appService from '@services/app'
+import * as menusService from '@services/menus'
 import queryString from 'query-string'
 import { modelExtend } from './common';
 import { ReduxSagaEffects, DvaSetupParams, ReduxAction } from '../ts-types';

@@ -1,8 +1,8 @@
 import { routerRedux } from 'dva/router'
-import * as loginService from '../services/login'
+import * as loginService from '@services/login'
 import { modelExtend } from './common'
-import { defaultPageInfo, loginRouter } from '../config';
-import { ReduxSagaEffects, ReduxAction } from '../ts-types';
+import { defaultPageInfo, loginRouter } from '@config';
+import { ReduxSagaEffects, ReduxAction } from '@ts-types';
 
 export default modelExtend({
   namespace: 'login',

@@ -44,7 +44,13 @@ module.exports = (webpackConfig, env) => {
   ])
 
   webpackConfig.resolve.alias = {
-    enums: `${__dirname}/src/utils/enums`,
+    '@components': `${__dirname}/src/components`,
+    '@models': `${__dirname}/src/models`,
+    '@services': `${__dirname}/src/services`,
+    '@utils': `${__dirname}/src/utils`,
+    '@config': `${__dirname}/src/config`,
+    '@ts-types': `${__dirname}/src/ts-types`,
+    '@enums': `${__dirname}/src/utils/enums`,
     themes: `${__dirname}/src/themes`,
   }
 

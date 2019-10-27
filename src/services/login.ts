@@ -1,5 +1,5 @@
-import { request } from '../utils'
-import { apis } from '../config'
+import { request } from '@utils'
+import { apis } from '@config'
 
 /**
  * 登录请求

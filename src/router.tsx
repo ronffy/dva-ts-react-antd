@@ -4,7 +4,7 @@ import { Switch, Route, Redirect, routerRedux } from 'dva/router'
 import dynamic from 'dva/dynamic'
 import App from './routes/app'
 import { defaultPageInfo } from './config';
-import { DvaApp, History } from './ts-types';
+import { DvaApp, History } from '@ts-types';
 
 const { ConnectedRouter } = routerRedux
 

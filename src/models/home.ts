@@ -1,6 +1,6 @@
 import { modelExtend } from './common'
-import { defaultPageInfo } from '../config';
-import { ReduxSagaEffects, Dispatch, DvaSetupParams, ReduxAction } from '../ts-types';
+import { defaultPageInfo } from '@config';
+import { ReduxSagaEffects, Dispatch, DvaSetupParams, ReduxAction } from '@ts-types';
 
 export default modelExtend({
   namespace: 'home',
@@ -11,6 +11,7 @@ export default modelExtend({
     setup({ dispatch, history }: DvaSetupParams) {
       history.listen(({ pathname }) => {
         if (pathname === defaultPageInfo.router || pathname === '/') {
+          console.log('xxx');
         }
       })
     },

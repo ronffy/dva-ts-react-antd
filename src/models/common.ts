@@ -3,7 +3,7 @@
  * @author ronffy
  */
 import _modelExtend from 'dva-model-extend'
-import { DvaModel } from '../ts-types';
+import { DvaModel } from '@ts-types';
 
 const commonModel = {
   reducers: {

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
 import { Row, Col } from 'antd'
-import { Page } from '../../components'
+import { Page } from '@components'
 import styles from './index.less'
 
 function Home ({ home, loading }) {

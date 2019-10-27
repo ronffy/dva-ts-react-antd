@@ -1,4 +1,4 @@
-export { History } from 'history';
+import { History } from 'history';
 
 export interface ReduxAction {
 	type: string,
@@ -59,11 +59,13 @@ export type DvaApp = {
 	start: any
 }
 
-
 export type DvaSetupParams = {
 	dispatch: Dispatch
 	history: History
 }
 
+export {
+	History
+}
 
 

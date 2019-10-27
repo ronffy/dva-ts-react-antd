@@ -10,35 +10,26 @@
     "baseUrl": "./src",
     "moduleResolution": "node",
     "paths": {
-      "models": [
-        "models"
-      ],
-      "components": [
+      "@components": [
         "components"
       ],
-      "utils": [
+      "@models": [
+        "models"
+      ],
+      "@services/*": [
+        "services/*"
+      ],
+      "@utils": [
         "utils"
       ],
-      "modules": [
-        "modules"
+      "@config": [
+        "config"
       ],
-      "routes": [
-        "routes"
+      "@ts-types": [
+        "ts-types"
       ],
-      "themes": [
-        "themes"
-      ],
-      "interfaces": [
-        "interfaces"
-      ],
-      "configs": [
-        "configs"
-      ],
-      "assets": [
-        "assets"
-      ],
-      "services": [
-        "services"
+      "@enums": [
+        "utils/enums"
       ]
     }
   },
